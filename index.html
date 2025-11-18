@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página Web</title>
+    <style>
+        body {
+            font-family: ArialRounded, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background: url('fondo.jpg') no-repeat center center fixed;
+            background-size: cover;
+            background-attachment: fixed; /* Asegura que el fondo se mantenga fijo en todos los dispositivos */
+        }
+        .logo {
+            max-width: 300px; /* Ajusta el tamaño máximo del logo según sea necesario */
+            margin: 20px auto;
+            display: block;
+            cursor: pointer; /* Cambia el cursor para indicar que es clickable */
+        }
+        .button-container {
+            margin: 20px 0;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .section {
+            margin: 40px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            display: none; /* Ocultos por defecto */
+            background-color: rgba(255, 255, 255, 0.8); /* Fondo semitransparente para mejor legibilidad */
+        }
+    </style>
+</head>
+<body>
+    <img src="logo.png" alt="Logo" class="logo" onclick="showSection('info')">
+   
+    <div class="button-container">
+        <button class="button" onclick="showSection('productos')">Productos</button>
+        <button class="button" onclick="showSection('proyectos')">Proyectos Terminados</button>
+        <button class="button" onclick="showSection('redes')">Redes Sociales</button>
+    </div>
+   
+    <div id="info" class="section">
+        <h2>Información de la Página Web</h2>
+        <p>Esta es una página dedicada al pixel art. Aquí encontrarás información sobre nuestros productos, proyectos terminados y cómo conectarte en redes sociales.</p>
+        <p>Puedes agregar más detalles sobre la página, como misión, visión o contacto.</p>
+        <!-- Puedes agregar más contenido real aquí -->
+    </div>
+   
+    <div id="productos" class="section">
+        <h2>Catálogo de Productos</h2>
+        <p>Aquí puedes encontrar información sobre nuestros productos. Por ejemplo:</p>
+        <ul>
+            <li>Producto 1: Descripción breve.</li>
+            <li>Producto 2: Descripción breve.</li>
+            <li>Producto 3: Descripción breve.</li>
+        </ul>
+        <!-- Puedes agregar más contenido o enlaces reales aquí -->
+    </div>
+   
+    <div id="proyectos" class="section">
+        <h2>Proyectos Terminados</h2>
+        <p>Información sobre proyectos completados. Por ejemplo:</p>
+        <ul>
+            <li>Proyecto A: Detalles y resultados.</li>
+            <li>Proyecto B: Detalles y resultados.</li>
+            <li>Proyecto C: Detalles y resultados.</li>
+        </ul>
+        <!-- Puedes agregar más contenido o enlaces reales aquí -->
+    </div>
+   
+    <div id="redes" class="section">
+        <h2>Redes Sociales</h2>
+        <p>Conéctate con nosotros en las redes sociales:</p>
+        <ul>
+            <li><a href="https://twitter.com" target="_blank">Twitter</a></li>
+            <li><a href="https://facebook.com" target="_blank">Facebook</a></li>
+            <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
+        </ul>
+        <!-- Puedes reemplazar con enlaces reales a perfiles -->
+    </div>
+    <script>
+        function showSection(id) {
+            // Ocultar todas las secciones
+            document.querySelectorAll('.section').forEach(function(section) {
+                section.style.display = 'none';
+            });
+            // Mostrar la sección seleccionada
+            document.getElementById(id).style.display = 'block';
+        }
+
+        // Mostrar la sección de info al cargar la página
+        window.onload = function() {
+            showSection('info');
+        };
+    </script>
+</body>
+</html>
