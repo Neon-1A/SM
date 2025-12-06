@@ -40,15 +40,163 @@
             background-color: #0056b3;
         }
         .section {
-            margin: 40px 0;
+            display: none;
+            padding: 30px;
+            color: rgb(0, 0, 0);
+            font-size: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            background: rgba(0, 0, 0, 0);
+            border-radius: 10px;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
             padding: 20px;
-            border: 1px solid #ddd;
+            max-width: 950px;
+            margin: 0 auto;
+        }
+    
+        .gallery img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+        }
+    
+        .gallery video {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
             border-radius: 5px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            display: none; /* Ocultos por defecto */
-            background-color: rgba(255, 255, 255, 0.8); /* Fondo semitransparente para mejor legibilidad */
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
+        }
+    
+        .producto {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            max-width: 300px;
+        }
+    
+        .descripcion {
+            background: white;
+            color: black;
+            font-size: 14px;
+            font-family: Tahoma;
+            font-weight: bold;
+            text-align: normal;
+            width: 100%;
+            max-width: 275px;
+            padding: 8px 10px;
+            margin-top: 0.5px;
+            margin-bottom: 0.5px;
+            border-radius: 0 0 0 0;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+            line-height: 1.4;
+        }
+    
+        .precio-container {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            margin-top: 2px;
+            width: 100%;
+            height: 50px;
+        }
+    
+        .precio {
+            position: relative;
+            background: black;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            flex: 1;
+            border-bottom-left-radius: 10px;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            height: 50px;
+            margin-top: 0px;
+        }
+    
+        .precio::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: -5%;
+            width: 110%;
+            height: 2px;
+            background: rgb(255, 255, 255);
+            transform: rotate(-15deg);
+            transform-origin: center;
+        }
+    
+        .descuento {
+            background: green;
+            color: white;
+            flex: 1;
+            border-bottom-right-radius: 10px;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            line-height: 1.1;
+            padding: 0;
+        }
+    
+        .descuento .monto {
+            font-size: 18px;
+            font-weight: bold;
+        }
+    
+        .descuento .etiqueta {
+            font-size: 14px;
+            font-weight: normal;
+        }
+    
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+        }
+    
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+    
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+    
+        .close:hover {
+            color: red;
         }
     </style>
 </head>
@@ -70,24 +218,61 @@
    
     <div id="productos" class="section">
         <h2>Catálogo de Productos</h2>
-        <p>Aquí puedes encontrar información sobre nuestros productos. Por ejemplo:</p>
-        <ul>
-            <li>Producto 1: Descripción breve.</li>
-            <li>Producto 2: Descripción breve.</li>
-            <li>Producto 3: Descripción breve.</li>
-        </ul>
-        <!-- Puedes agregar más contenido o enlaces reales aquí -->
+        <div class="gallery">
+            <div class="producto">
+                <img src="producto1.png" alt="Producto 1" onclick="openModal('producto1.png')">
+                <div class="descripcion">Descripción breve del Producto 1.</div>
+                <div class="precio-container">
+                    <div class="precio">$50</div>
+                    <div class="descuento">
+                        <span class="monto">$40</span>
+                        <span class="etiqueta">con descuento</span>
+                    </div>
+                </div>
+            </div>
+            <div class="producto">
+                <img src="producto2.png" alt="Producto 2" onclick="openModal('producto2.png')">
+                <div class="descripcion">Descripción breve del Producto 2.</div>
+                <div class="precio-container">
+                    <div class="precio">$60</div>
+                    <div class="descuento">
+                        <span class="monto">$45</span>
+                        <span class="etiqueta">con descuento</span>
+                    </div>
+                </div>
+            </div>
+            <div class="producto">
+                <img src="producto3.png" alt="Producto 3" onclick="openModal('producto3.png')">
+                <div class="descripcion">Descripción breve del Producto 3.</div>
+                <div class="precio-container">
+                    <div class="precio">$70</div>
+                    <div class="descuento">
+                        <span class="monto">$55</span>
+                        <span class="etiqueta">con descuento</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Puedes agregar más productos reales aquí -->
+        </div>
     </div>
    
     <div id="proyectos" class="section">
         <h2>Proyectos Terminados</h2>
-        <p>Información sobre proyectos completados. Por ejemplo:</p>
-        <ul>
-            <li>Proyecto A: Detalles y resultados.</li>
-            <li>Proyecto B: Detalles y resultados.</li>
-            <li>Proyecto C: Detalles y resultados.</li>
-        </ul>
-        <!-- Puedes agregar más contenido o enlaces reales aquí -->
+        <div class="gallery">
+            <div class="producto">
+                <img src="py1.jpg" alt="Proyecto A" onclick="openModal('py1.jpg')">
+                <div class="descripcion">Detalles y resultados del Proyecto A.</div>
+            </div>
+            <div class="producto">
+                <img src="py2.jpg" alt="Proyecto B" onclick="openModal('py2.jpg')">
+                <div class="descripcion">Detalles y resultados del Proyecto B.</div>
+            </div>
+            <div class="producto">
+                <img src="py3.jpg" alt="Proyecto C" onclick="openModal('py3.jpg')">
+                <div class="descripcion">Detalles y resultados del Proyecto C.</div>
+            </div>
+            <!-- Puedes agregar más proyectos reales aquí -->
+        </div>
     </div>
    
     <div id="redes" class="section">
@@ -100,6 +285,12 @@
         </ul>
         <!-- Puedes reemplazar con enlaces reales a perfiles -->
     </div>
+
+    <div id="modal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="modalImage">
+    </div>
+
     <script>
         function showSection(id) {
             // Ocultar todas las secciones
@@ -109,6 +300,24 @@
             // Mostrar la sección seleccionada
             document.getElementById(id).style.display = 'block';
         }
+
+        function openModal(src) {
+            var modal = document.getElementById('modal');
+            var modalImg = document.getElementById('modalImage');
+            modal.style.display = "flex";
+            modalImg.src = src;
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = "none";
+        }
+
+        // Cerrar modal al hacer clic fuera de la imagen
+        document.getElementById('modal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeModal();
+            }
+        });
 
         // Mostrar la sección de info al cargar la página
         window.onload = function() {
