@@ -14,7 +14,20 @@
             background: url('fondo.jpg') no-repeat center center fixed;
             background-size: cover;
             background-attachment: fixed; /* Asegura que el fondo se mantenga fijo en todos los dispositivos */
+            position: relative; /* Necesario para el pseudo-elemento */
         }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3); /* Capa semitransparente negra para opacar el fondo. Ajusta el valor de opacidad (0.3) según necesites */
+            z-index: -1; /* Coloca la capa detrás del contenido */
+        }
+
         .logo {
             max-width: 300px; /* Ajusta el tamaño máximo del logo según sea necesario */
             margin: 20px auto;
@@ -49,7 +62,9 @@
             text-align: center;
             background: rgba(0, 0, 0, 0);
             border-radius: 10px;
+            position: relative; /* Asegura que el contenido esté por encima de la capa de opacidad */
         }
+        
         .gallery {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
